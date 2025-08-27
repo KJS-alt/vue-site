@@ -4,8 +4,13 @@ import D1_bind from './components/comp1/D1_bind.vue'
 import D2_if from './components/comp1/D2_if.vue'
 import D3_show from './components/comp1/D3_show.vue'
 import D4_for from './components/comp1/D4_for.vue'
+import D5_event from './components/comp1/D5_event.vue'
+import D6_methods from './components/comp1/D6_methods.vue'
+import D7_model from './components/comp1/D7_model.vue'
+import D8_computed from './components/comp1/D8_computed.vue'
+import D9_watchers from './components/comp1/D9_watchers.vue'
 
-const pages = {D1_bind, D2_if, D3_show, D4_for }
+const pages = {D1_bind, D2_if, D3_show, D4_for,D5_event, D6_methods, D7_model, D8_computed, D9_watchers }
 const activeComp = ref()
 
 </script>
@@ -16,6 +21,11 @@ const activeComp = ref()
     <button @click="activeComp = 'D2_if'">if_이프</button>
     <button @click="activeComp = 'D3_show'">show_쇼우</button>
     <button @click="activeComp = 'D4_for'">for_포</button>
+    <button @click="activeComp = 'D5_event'">event</button>
+    <button @click="activeComp = 'D6_methods'">methods 메소드 구현</button>
+    <button @click="activeComp = 'D7_model'">model 양방향 바인딩</button>
+    <button @click="activeComp = 'D8_computed'">computed 계산된 코드</button>
+    <button @click="activeComp = 'D9_watchers'">watchers 데이터 값 변경 시, 감시자가 실행</button>
 
     <!-- <keepAlive> : 런타임에 컴포넌트가 변경될 때,
       메모리보존, 설정 내부값이 초기화되지 않도록 -->
