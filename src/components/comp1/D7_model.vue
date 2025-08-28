@@ -26,7 +26,7 @@ const addItem = () => {
     // 목록 init
     itemName.value = null
     itemNumber.value = null
-    itemImportant = false
+    itemImportant.value = false
 }
 
 </script>

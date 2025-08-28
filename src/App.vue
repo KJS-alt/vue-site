@@ -1,55 +1,97 @@
 <script setup>
-import {ref} from 'vue'
-import D1_bind from './components/comp1/D1_bind.vue'
-import D2_if from './components/comp1/D2_if.vue'
-import D3_show from './components/comp1/D3_show.vue'
-import D4_for from './components/comp1/D4_for.vue'
-import D5_event from './components/comp1/D5_event.vue'
-import D6_methods from './components/comp1/D6_methods.vue'
-import D7_model from './components/comp1/D7_model.vue'
-import D8_computed from './components/comp1/D8_computed.vue'
-import D9_watchers from './components/comp1/D9_watchers.vue'
-import D10_form from './components/comp1/D10_form.vue'
-
-const pages = {D1_bind, D2_if, D3_show, D4_for,D5_event, D6_methods, D7_model, D8_computed, D9_watchers, D10_form }
-const activeComp = ref()
-
 </script>
 
 <template>
-  
-    <button @click="activeComp = 'D1_bind'">bind_바인드</button>
-    <button @click="activeComp = 'D2_if'">if_이프</button>
-    <button @click="activeComp = 'D3_show'">show_쇼우</button>
-    <button @click="activeComp = 'D4_for'">for_포</button>
-    <button @click="activeComp = 'D5_event'">event</button>
-    <button @click="activeComp = 'D6_methods'">methods 메소드 구현</button>
-    <button @click="activeComp = 'D7_model'">model 양방향 바인딩</button>
-    <button @click="activeComp = 'D8_computed'">computed 계산된 코드</button>
-    <button @click="activeComp = 'D9_watchers'">watchers 데이터 값 변경 시, 감시자가 실행</button>
-    <button @click="activeComp = 'D10_form'">form</button>
+  <div class="app-container">
+    <nav class="main-nav">
+      <div class="nav-header">
+        <h1>경로: <span>{{ $route.path }}</span></h1>
+      </div>
+      <div class="nav-buttons">
+        <router-link to="/" class="nav-btn">Home</router-link>
+        <router-link to="/about" class="nav-btn">About</router-link>
+        <router-link to="/study" class="nav-btn">Study</router-link>
+        <router-link to="/wd" class="nav-btn">WebDesign</router-link>
+      </div>
+    </nav>
 
-    <!-- <keepAlive> : 런타임에 컴포넌트가 변경될 때,
-      메모리보존, 설정 내부값이 초기화되지 않도록 -->
-      <!-- <component> : 런타임에 컴포넌트를 바꿔준다. -->
-
-    <div id="comp_view">
-        <KeepAlive>
-            <component :is="pages[activeComp]"></component>
-        </KeepAlive>
-    </div>
+    <main class="main-content">
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <style scoped>
-button {
-    margin: 5px;
-    filter: drop-shadow(0 0 1.5px #123 );
-}
-#comp_view {
-    margin-top: 20px;
-    border: 1px solid orange;
-    border-radius: 10px;
-    filter: drop-shadow(1px 1px 1px rgb(118, 187, 255) );
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
+.main-nav {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.nav-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.nav-header h1 {
+  color: #2c3e50;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.nav-header span {
+  color: #3498db;
+  font-weight: normal;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #6dd5e0 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  display: inline-block;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.nav-btn.router-link-active {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+}
+
+.main-content {
+  padding: 0 20px 40px;
+}
+
+@media (max-width: 768px) {
+  .nav-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-btn {
+    width: 200px;
+    text-align: center;
+  }
+}
 </style>
